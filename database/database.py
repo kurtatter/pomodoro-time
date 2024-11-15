@@ -7,7 +7,9 @@ from settings import Settings
 
 settings = Settings()
 
-engine = create_engine(settings.db_url)
+engine = create_engine(
+    f'postgresql+psycopg2://{settings.DB_USER}:{settings.DB_PASSWORD}@{settings.DB_HOST}:{settings.DB_PORT}/{settings.DB_NAME}'
+)
 
 Session = sessionmaker(engine)
 

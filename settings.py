@@ -2,5 +2,11 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    GOOGLE_TOKEN_ID: str = "6dcd4ce23d88e2ee9568ba546c007c63d4f1c3b0c1c1c1c1c1c1c1c1c1c1c1c1"
-    db_url: str = 'postgresql+psycopg2://postgres:password@localhost:5432/pomodoro'
+    DB_HOST: str = 'localhost'
+    DB_PORT: int = 5432
+    DB_USER: str = 'postgres'
+    DB_PASSWORD: str = 'password'
+    DB_NAME: str = 'pomodoro'
+    CACHE_HOST: str = 'localhost'
+    CACHE_PORT: int = 6379
+    CACHE_DB: int = 0
