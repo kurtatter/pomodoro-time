@@ -3,7 +3,7 @@ from typing import Annotated
 from fastapi import APIRouter, status, Depends
 
 from dependency import get_tasks_db_repository, get_task_service
-from schema.task import TaskSchema
+from schema import TaskSchema
 from repository import TaskDBRepository
 from service.task import TaskService
 

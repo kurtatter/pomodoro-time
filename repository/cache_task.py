@@ -2,7 +2,7 @@ import json
 
 from redis import Redis
 
-from schema.task import TaskSchema
+from schema import TaskSchema
 
 
 class TaskCacheRepository:
