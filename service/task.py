@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from repository import TaskDBRepository, TaskCacheRepository
-from schema.task import TaskSchema
+from schema import TaskSchema
 
 
 @dataclass
@@ -9,7 +9,7 @@ class TaskService:
     task_db_repository: TaskDBRepository
     task_cache_repository: TaskCacheRepository
 
-    def get_tasks(self):
+    def get_tasks(self) -> list[TaskSchema]:
         if cache_tasks := self.task_cache_repository.get_tasks():
             return cache_tasks
         else:
