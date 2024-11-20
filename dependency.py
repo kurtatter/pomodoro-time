@@ -30,10 +30,17 @@ def get_user_repository(db_session: Session = Depends(get_db_session)) -> UserRe
     return UserRepository(db_session=db_session)
 
 
+def get_auth_service(user_repository=Depends(get_user_repository)) -> AuthService:
+    return AuthService(
+        user_repository=user_repository
+    )
+
+
 def get_user_service(
-        user_repository: UserRepository = Depends(get_user_repository)
+        user_repository: UserRepository = Depends(get_user_repository),
+        auth_service: AuthService = Depends(get_auth_service)
 ) -> UserService:
-    return UserService(user_repository=user_repository)
+    return UserService(user_repository=user_repository, auth_service=auth_service)
 
 
 def get_auth_service(user_repository: UserRepository = Depends(get_user_repository)) -> AuthService:
